@@ -1,0 +1,58 @@
+/*
+ * $Id: ForeignKeyEventManager.java, 2018年6月7日 下午12:01:00 XiuYu.Ge Exp $
+ * 
+ * Copyright (c) 2012 Vnierlai Technologies Co.,Ltd 
+ * All rights reserved.
+ * 
+ * This software is copyrighted and owned by Vnierlai or the copyright holder
+ * specified, unless otherwise noted, and may not be reproduced or distributed
+ * in whole or in part in any form or medium without express written permission.
+ */
+package cn.zzcode.listener.manager;
+
+import java.util.Iterator;
+import java.util.concurrent.ArrayBlockingQueue;
+
+import cn.zzcode.listener.ColumnEventListener;
+import cn.zzcode.listener.Listener;
+import cn.zzcode.listener.event.ColumnEvent;
+import cn.zzcode.listener.event.Event;
+
+/**
+ * <p>
+ * Title: ForeignKeyEventManager
+ * </p>
+ * <p>
+ * Description:
+ * </p>
+ * 
+ * @author XiuYu.Ge
+ * @created 2018年6月7日 下午12:01:00
+ * @modified [who date description]
+ * @check [who date description]
+ */
+public class ColumnEventManager implements EventManager {
+
+    private ArrayBlockingQueue<ColumnEventListener> queue = new ArrayBlockingQueue<ColumnEventListener>(5);
+
+    /**
+     * @see cn.zzcode.listener.manager.EventManager#publish(cn.zzcode.listener.event.Event)
+     */
+    public void publish(Event event) {
+
+        Iterator<ColumnEventListener> iterator = queue.iterator();
+        while (iterator.hasNext()) {
+            ColumnEventListener next = iterator.next();
+            next.Event((ColumnEvent) event);
+        }
+
+    }
+
+    /**
+     * @see cn.zzcode.listener.manager.EventManager#addListener(cn.zzcode.listener.Listener)
+     */
+    public void addListener(Listener listener) {
+        queue.add((ColumnEventListener) listener);
+    }
+
+}
