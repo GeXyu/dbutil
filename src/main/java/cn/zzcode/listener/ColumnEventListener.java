@@ -27,5 +27,5 @@ import cn.zzcode.listener.event.ColumnEvent;
  */
 public interface ColumnEventListener extends Listener {
 
-    void Event(ColumnEvent event);
+    void event(ColumnEvent event);
 }

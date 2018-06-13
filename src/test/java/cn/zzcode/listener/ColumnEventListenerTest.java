@@ -28,9 +28,9 @@ import cn.zzcode.listener.event.ColumnEvent;
 public class ColumnEventListenerTest implements ColumnEventListener {
 
     /**
-     * @see cn.zzcode.listener.ColumnEventListener#Event(cn.zzcode.listener.event.ColumnEvent)
+     * @see cn.zzcode.listener.ColumnEventListener#event(cn.zzcode.listener.event.ColumnEvent)
      */
-    public void Event(ColumnEvent event) {
+    public void event(ColumnEvent event) {
         System.out.println(event.getColumnDefinition().getColnumName());
 
     }

@@ -43,7 +43,7 @@ public class ColumnEventManager implements EventManager {
         Iterator<ColumnEventListener> iterator = queue.iterator();
         while (iterator.hasNext()) {
             ColumnEventListener next = iterator.next();
-            next.Event((ColumnEvent) event);
+            next.event((ColumnEvent) event);
         }
 
     }
